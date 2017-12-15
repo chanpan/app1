@@ -65,7 +65,32 @@ exports.Delete = function(tables, wheres){
             .then(res=>resolve(res))
             .catch(err=>reject(err));
     }); 
-    
-   
-    
+ 
+}
+
+
+// get service
+exports.GetService = function(url, data){
+    /**
+     * url : string example https://xxx.av
+     * data : object example { name: "John", time: "2pm" }
+     */
+    $.get(url,data,function(res){
+        return new Promise((resolve, reject) => {
+            resolve(res);
+        });
+    });
+}
+
+// post service
+exports.PostService = function(url, data){
+    /**
+     * url : string example https://xxx.av
+     * data : object example { name: "John", time: "2pm" }
+     */
+    $.post(url,data,function(res){
+        return new Promise((resolve, reject) => {
+            resolve(res);
+        });
+    });
 }
