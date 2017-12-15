@@ -27,9 +27,9 @@
 
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
-                <script>
-                   let knexMysql = require('./database/KnexMysql.js');
-                   knexMysql.showAll('tb_users').then(res=>console.log(res));
+                <div id='show-users'></div>
+                <script> 
+                    require('./components/User.js');
                 </script>
             </div>
             <div id="menu1" class="tab-pane fade">

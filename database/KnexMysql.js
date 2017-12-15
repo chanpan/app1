@@ -11,9 +11,8 @@ var knex = require('knex')({
 
 exports.showAll = function (tables) {
     /** 
-      * tables : string  example  'users'
+      * tables : string  example  'tb_users'
     */
-    
     return new Promise((resolve, reject) => {
         knex.select('*').from(tables)
             .then(res => resolve(res))
@@ -47,7 +46,8 @@ exports.Create = function (tables,data) {
 exports.Update = function (tables, data, wheres) {
     /**
      * tables : string
-     * data : object example {username:'user',password:'user'} {id:1}
+     * data : object example {username:'user',password:'user'} 
+     * wheres : object example {id:1}
      */
     return new Promise((resolve, reject) => {
         knex.update(data).from(tables).where(wheres)
@@ -57,7 +57,7 @@ exports.Update = function (tables, data, wheres) {
 }
 exports.Delete = function(tables, wheres){
     /**
-     * tables : string
+     * tables : string example 'tb_users'
      * wheres : object example  {id:1}
      */
     return new Promise((resolve, reject) => {
