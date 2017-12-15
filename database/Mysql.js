@@ -11,7 +11,16 @@ exports.User = function() {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM tb_users', function (error, results, fields) {
             if (error) reject(error);
-            resolve(results);
+            resolve(results);           
+        });
+    });
+}
+
+exports.CreateUser = function(value) {
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO tb_users SET ? ',value, function (error, results, fields) {
+            if (error) reject(error);
+            resolve(results);           
         });
     });
 }
