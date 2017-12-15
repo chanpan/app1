@@ -1,24 +1,28 @@
 $('#btnCreateUser').on('click',()=>{
-    formUser();
+    let data = {user_id:1, username:'xxx', password:'xxxx'};
+    formUser(data);
     $('#show-users').hide();
 });
 
 //
-formUser = function(){
+formUser = function(data){
+    /**
+     * data : object data = {user_id:1, username:'xxx', password:'xxxx'}
+     */
     let template=`
     <br>
     <form id='form-users'>
         <div class='panel panel-primary'>
             <div class='panel-heading'>Users</div>
             <div class='panel-body'>
-                
+                    <input type='hidden' id='user_id' name='user_id' value='${data.user_id}'>
                     <div>
                         <label>Username</label>
-                        <input type="text" name='username' class="form-control" id="username" placeholder="">
+                        <input value='${data.username}' type="text" name='username' class="form-control" id="username" placeholder="">
                     </div>
                     <div>
                         <label>Username</label>
-                        <input type="password" name='password' class="form-control" id="password" placeholder="">
+                        <input value='${data.password}' type="password" name='password' class="form-control" id="password" placeholder="">
                     </div>
                 
             </div>
@@ -45,11 +49,22 @@ function Save(){
     for(let i of frm){
         data[i.name] = i.value;
     }
-    knexMysql.Create('tb_users', data).then(res=>{
-        console.log(res);
-        $('#form-users').hide();
-        location.reload();
-        ShowUser();
-    });
+    if(data.user_id == ""){
+        //create
+        knexMysql.Create('tb_users', data).then(res=>{
+            console.log(res);
+            $('#form-users').hide();
+            location.reload();
+            ShowUser();
+        });
+    }else{
+        knexMysql.Update('tb_users', data, {user_id:data.user_id}).then(res=>{
+            console.log(res);
+            $('#form-users').hide();
+            location.reload();
+            ShowUser();
+        });
+    }
+  
     return false;
 }

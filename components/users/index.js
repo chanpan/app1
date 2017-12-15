@@ -39,8 +39,23 @@ function ShowUser(){
         }
         $('#show-users').html(headerTable);
         $('#tbody-user').html(bodyTable);
+       
+        //btn update and delete
+        $('.btnEdit').click(function(){
+            alert($(this).attr('data-id'));
+        });
+
+        $('.btnDelete').click(function(){
+            alert($(this).attr('data-id'));
+        });
+
+
 
         require('./form');
+
+        //btn update delete
+
+
     });//end call back  
 
 }
