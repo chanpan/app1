@@ -13,12 +13,13 @@
 </head>
 
 <body>
-    
+
     <div class="container">
         <h2>Dynamic Tabs</h2>
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#home"><i class="glyphicon glyphicon-home"></i> Home</a>
+                <a data-toggle="tab" href="#home">
+                    <i class="glyphicon glyphicon-home"></i> Home</a>
             </li>
             <li>
                 <a data-toggle="tab" href="#menu1">Menu 1</a>
@@ -28,19 +29,20 @@
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
                 <div style="margin-top:10px;">
-                        <div id='show-users-form'></div>
-                        <div id='show-users'></div>
+                    <div id='show-users-form'></div>
+                    <div id='show-users'></div>
                 </div>
                 <script> 
-                   require('./components/users/index.js');
+                    require('./components/users/index.js');
+
                     let webservice = require("./database/KnexMysql.js");
                     let url = 'http://thaicarecloud.av/site/get-service';
-                    webservice.PostService(url,{fname:'nuttaphon', lname:'chanpan'})
-                            .then((res)=>{
-                                
-                                    console.log(res);
-                                
-                            });
+                    webservice.PostService(url, { fname: 'nuttaphon', lname: 'chanpan' })
+                        .then((res) => {
+
+                            console.log(res);
+
+                        });  
                 </script>
             </div>
             <div id="menu1" class="tab-pane fade">
