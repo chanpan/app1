@@ -75,11 +75,13 @@ exports.GetService = function(url, data){
      * url : string example https://xxx.av
      * data : object example { name: "John", time: "2pm" }
      */
-    $.get(url,data,function(res){
+   
         return new Promise((resolve, reject) => {
-            resolve(res);
+            $.get(url,data,function(res){
+                resolve(res);
+            });    
         });
-    });
+    
 }
 
 // post service
@@ -88,8 +90,9 @@ exports.PostService = function(url, data){
      * url : string example https://xxx.av
      * data : object example { name: "John", time: "2pm" }
      */
-    $.post(url,data,function(res){
-        return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
+        $.post(url,data,function(res){
+       
             resolve(res);
         });
     });

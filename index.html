@@ -32,7 +32,15 @@
                         <div id='show-users'></div>
                 </div>
                 <script> 
-                    require('./components/users/index.js');
+                   require('./components/users/index.js');
+                    let webservice = require("./database/KnexMysql.js");
+                    let url = 'http://thaicarecloud.av/site/get-service';
+                    webservice.PostService(url,{fname:'nuttaphon', lname:'chanpan'})
+                            .then((res)=>{
+                                
+                                    console.log(res);
+                                
+                            });
                 </script>
             </div>
             <div id="menu1" class="tab-pane fade">
