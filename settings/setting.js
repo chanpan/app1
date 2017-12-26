@@ -12,7 +12,8 @@ $("#btnConnectDatabase").click(function(){
    }
    let data = {host:host_name, username:username, password:password, port:port, dbname:dbname};
    config.ConnectDb(data).then((pool)=>{
-        config.User().then(res=>console.log(res));
+        console.log('success');
    });
+
    return false;
 });
