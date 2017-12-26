@@ -22,36 +22,24 @@
                     <i class="glyphicon glyphicon-home"></i> Home</a>
             </li>
             <li>
-                <a data-toggle="tab" href="#menu1">Menu 1</a>
+                <a data-toggle="tab" href="#setting"><i class="glyphicon glyphicon-cog"></i> Setting</a>
             </li>
         </ul>
 
         <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-                <div style="margin-top:10px;">
-                    <div id='show-users-form'></div>
-                    <div id='show-users'></div>
-                </div>
-                <script> 
-                    require('./components/users/index.js');
-
-                    let webservice = require("./database/KnexMysql.js");
-                    let url = 'http://thaicarecloud.av/site/get-service';
-                    webservice.PostService(url, { fname: 'nuttaphon', lname: 'chanpan' })
-                        .then((res) => {
-
-                            console.log(res);
-
-                        });  
-                </script>
+            <div id="home" class="tab-pane fade in active">              
             </div>
-            <div id="menu1" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div id="setting" class="tab-pane fade">
+                <h3>Setting</h3>
+                <div id="show-setting"></div>
             </div>
 
         </div>
     </div>
+    <script>
+        $.get('./settings/setting.html',function(res){
+            $("#show-setting").html(res);
+        });
+    </script>
 </body>
-
 </html>
