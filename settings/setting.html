@@ -11,45 +11,49 @@
 
 <body>
     <div class="col-md-6 col-md-offset-3">
-    <form id="frm-setting">
-        <div class="panel panel-default">
-            <div class="panel-heading">Setting</div>
-            <div class="panel-body">
+        <form id="frm-setting">
+            <div class="panel panel-default">
+                <div class="panel-heading">Setting</div>
+                <div class="panel-body">
 
-                <div>
-                    <label>Select Database</label>
-                    <select name='select-db' id="select-db" class="form-control">
-                        <option value='1'>Mysql</option>
-                        <option value='2'>Sqlite</option>
-                    </select>
+                    <div>
+                        <label>Select Database</label>
+                        <select name='select-db' id="select-db" class="form-control">
+                            <option value='1'>Mysql</option>
+                            <option value='2'>Sqlite</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Host</label>
+                        <input type="text" name='host-name' id="host-name" class="form-control" value="127.0.0.1" />
+                    </div>
+                    <div>
+                        <label>Username</label>
+                        <input type="text" name='username' id="username" class="form-control" value="root" />
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input type="text" name='password' id="password" class="form-control" value="" />
+                    </div>
+                    <div>
+                        <label>Port</label>
+                        <input type="text" name='port' id="port" class="form-control" value="3306" />
+                    </div>
+                    <div>
+                        <label>Database</label>
+                        <input type="text" name='dbname' id="dbname" class="form-control" value="nhis" />
+                    </div>
                 </div>
-                <div>
-                    <label>Host</label>
-                    <input type="text" name='host-name' id="host-name" class="form-control" />
-                </div>
-                <div>
-                    <label>Username</label>
-                    <input type="text" name='username' id="username" class="form-control" />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="text" name='password' id="password" class="form-control" />
-                </div>
-                <div>
-                    <label>Port</label>
-                    <input type="text" name='port' id="port" class="form-control" />
-                </div>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12">
-                            <button class="btn btn-primary pull-right" id="btnConnectDatabase">Connect</button>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary pull-right" id="btnConnectDatabase">Connect</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </body>
 
 </html>

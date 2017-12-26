@@ -1,15 +1,22 @@
 var mysql = require('mysql');
-var pool = mysql.createPool({
-    connectionLimit: 10,
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'Chanpan!((#',
-    database: 'demo'
-});
+var pool = "";
+exports.ConnectDb = function(data){
+    return new Promise((resolve, reject) => {
+        pool = mysql.createPool({
+            connectionLimit: 10,
+            host: data.host,
+            user: data.username,
+            password: data.password,
+            database: data.dbname,
+            port: data.port
+        });
+        resolve(pool); 
+    });
+}
 
 exports.User = function() {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM tb_users', function (error, results, fields) {
+        pool.query('SELECT * FROM user', function (error, results, fields) {
             if (error) reject(error);
             resolve(results);           
         });
