@@ -6,7 +6,15 @@ function Modal(id,title,msg) {
     $('#showModal').html(m);
     $(`#${id}`).modal('show');
 }
+function AddBtnLoading(id){
+    $(`#${id}`).addClass('fa fa-spinner fa-spin');
+}
+function RemoveBtnLoading(id){
+    $(`#${id}`).removeClass('fa fa-spinner fa-spin');
+}
+
 $("#btnConnectDatabase").click(function () {
+    AddBtnLoading("btnConnectDatabase i");
     let select_db = $("#select-db").val();
     let host_name = $("#host-name").val();
     let username = $("#username").val();
@@ -16,19 +24,27 @@ $("#btnConnectDatabase").click(function () {
 
     if (select_db != 1 && select_db != 2) { //!= mysql and != sqlite 
         // alert("กรุณาเลือกประเภทฐานข้อมูล");
+        RemoveBtnLoading("btnConnectDatabase i");
         Modal('validationModal', 'Error', 'กรุณาเลือกประเภทฐานข้อมูล');
         return false;
     }
     if (select_db == 1) {
         //mysql
         let data = { host: host_name, username: username, password: password, port: port, dbname: dbname };
-        config.Connect(data)
+        setTimeout(function(){ 
+            config.Connect(data)
             .then((res) => {
-                Modal('validationModalSuccess', `Success`, `เชื่อต่อสำเร็จ`);
+                    RemoveBtnLoading("btnConnectDatabase i");
+                    Modal('validationModalSuccess', `Success`, `เชื่อต่อสำเร็จ`);
+               
             })
             .catch((err) => {
-                Modal('validationModalError', `Error ${err.code} ${err.errno}`, err.sqlMessage);
+                    RemoveBtnLoading("btnConnectDatabase i");
+                    Modal('validationModalError', `Error ${err.code} ${err.errno}`, err.sqlMessage);
+                
             });
+        },1500);
+      
 
     }
 
