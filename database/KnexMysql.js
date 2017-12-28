@@ -1,14 +1,30 @@
-var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: 'Chanpan!((#',
-        database: 'demo'
-    },
-    pool: { min: 0, max: 7 }
-});
-
+var knex = "";
+exports.Connect=function(data){
+    knex = require('knex')({
+        client: 'mysql',
+        connection: {
+            host: data.host,
+            user: data.username,
+            password: data.password,
+            database: data.dbname,
+            port:data.port
+        },
+        pool: { min: 0, max: 7 }
+    });
+    return new Promise((resolve, reject) => {
+        TestConnect()
+            .then(res=>resolve(res))
+            .catch(err=>reject(err));
+    });
+    
+}
+function TestConnect() {
+    return new Promise((resolve, reject) => {
+        knex.raw('select 1+1 as result').then(function (res) {
+            resolve(res)
+        }).catch(err=>reject(JSON.parse(JSON.stringify(err))));
+    });
+}
 exports.showAll = function (tables) {
     /** 
       * tables : string  example  'tb_users'
