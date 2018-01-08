@@ -38,7 +38,11 @@
         </ul>
 
         <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">              
+            <div id="home" class="tab-pane fade in active">  
+                <script>
+                   let sqlite = require('./database/KnexSqlite.js');
+                   sqlite.ConnectDb();    
+                </script>            
             </div>
             <div id="setting" class="tab-pane fade">
                 <h3></h3>
