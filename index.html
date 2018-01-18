@@ -20,43 +20,34 @@
 </head>
 
 <body>
-
-</script>
-    <div class="container">
-        <h2>Dynamic Tabs</h2>
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-toggle="tab" href="#home">
-                    <i class="glyphicon glyphicon-home"></i> Home</a>
-            </li>
-            <li>
-                <a data-toggle="tab" href="#setting"><i class="glyphicon glyphicon-cog"></i> Setting</a>
-            </li>
-            <li>
-                <a data-toggle="tab" href="#demoTable"><i class="glyphicon glyphicon-table"></i> Table</a>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">  
-                <script>
-                   let sqlite = require('./database/KnexSqlite.js');
-                   sqlite.ConnectDb();    
-                </script>            
-            </div>
-            <div id="setting" class="tab-pane fade">
-                <h3></h3>
-                <div id="show-setting"></div>
-            </div>
-            <div id="demoTable" class="tab-pane fade">
-                <div id="show-dataTable"></div>
-            </div>
-        </div>
-    </div>
+    <table id="tbUser" class="display table table-bordered table-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Email</th> 
+                    <th>Username</th>
+                </tr>
+            </thead>
+ 
+            <tbody id="tbody_user">
+                 
+            </tbody>
+        </table>
     <script>
-        $("#show-setting").load('./settings/setting.html');
-        $("#show-dataTable").load('./views/demo-table/index.html');
-        
-    </script>
+         
+        function load_tb_user(url=''){
+            url = '' || 'http://localhost/yii2_basic/web/test/user/create3';
+            $.get(url,function(res){
+                let out = "";
+                let result = res.map(function(v,k){
+                     out += `<tr><td>${v.email}</td><td>${v.username}</td></tr>`;
+                });
+                $('#tbody_user').html(out);
+                $('#tbUser').DataTable();
+               
+            });  
+        }
+        load_tb_user();
+   
+     </script>    
 </body>
 </html>
